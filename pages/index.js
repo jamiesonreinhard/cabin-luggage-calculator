@@ -65,7 +65,7 @@ const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded
             </div>
             <hr />
               <div className={styles.summary_cta}>
-                { sum/1000 < maxWeight ? 
+                { sum/1000 <= maxWeight ? 
                 <Link href="/report">See Summary</Link> : 
                   <div>
                     <h4>Too Heavy!</h4>
