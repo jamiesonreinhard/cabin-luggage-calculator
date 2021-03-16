@@ -20,8 +20,8 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: 20px;
-  min-height: 300px;
-  min-width: 250px;
+  min-height: 200px;
+  width: 250px;
   box-shadow: #4B453E, 15%;
   margin: 20px;
   background-color: #f1ede9;
@@ -65,4 +65,21 @@
 
 .total {
   text-align: right;
+}
+
+.summary_cta {
+  text-align: center;
+  margin: 20px auto;
+
+  a {
+    background-color: #f07979;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: 1px 1px gray;
+    font-size: 20px;
+  }
 }
