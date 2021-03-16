@@ -18,7 +18,7 @@ const Report = ({selected, sum, maxWeight}) => {
   return(
     <div className={styles.container}>
       <div className={styles.card}>
-        <h3>My Backpack</h3>
+        <h3>🎒 My Backpack</h3>
         <hr />
           <ul>
             {selectedList}

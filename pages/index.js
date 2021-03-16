@@ -41,27 +41,32 @@ const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.container}>
+        
         <AirlineDropdown airlineArray={airlineArray} updateMaxWeight={updateMaxWeight} />
+
         <div className={styles.cardDeck}>
+
           <div className={styles.card}>
-            <h3>Inventory</h3>
+            <h3>🛍 Inventory</h3>
             <hr /> 
             { isLoaded ? <ul>{itemList}</ul> : <LoadSpinner /> }
           </div>
           <AiOutlineArrowRight size={36} style={{"marginTop": "150px"}}/>
+
           <div className={styles.card}>
-            <h3>Selected</h3>
+            <h3>✅ Selected</h3>
             <hr />
-              <ul>
-                {selectedList}
-              </ul>
+            <ul>
+              {selectedList}
+            </ul>
             <hr />
-              <div className={styles.total} style={sum/1000 <= maxWeight ? {"color": "green"} : {"color": "red"}}>
-                Total: {sum/1000}kg
-              </div>
+            <div className={styles.total} style={sum/1000 <= maxWeight ? {"color": "green"} : {"color": "red"}}>
+              Total: {sum/1000}kg
+            </div>
             <hr />
               <div className={styles.summary_cta}>
-                { sum/1000 < maxWeight ? <Link href="/report">See Summary</Link> : 
+                { sum/1000 < maxWeight ? 
+                <Link href="/report">See Summary</Link> : 
                   <div>
                     <h4>Too Heavy!</h4>
                     <small>Remove some items to stay within the airline's limit.</small>
@@ -69,6 +74,7 @@ const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded
                 }
               </div>
           </div>
+          
         </div>
       </main>
     </div>
