@@ -83,3 +83,19 @@
     font-size: 20px;
   }
 }
+
+.customSelect {
+  select {
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    position: relative;
+    &:active {
+      border: none;
+      outline: none;
+    }
+  }
+}
