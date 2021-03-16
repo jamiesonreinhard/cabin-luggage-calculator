@@ -1,35 +1,12 @@
-import React, { useState, useEffect} from 'react'
+import React from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-import getItems from '../services/services'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
 import LoadSpinner from '../components/loadSpinner'
-import airlines from '../data/airlines.json'
+import AirlineDropdown from '../components/airlineDropdown'
+import Link from 'next/link'
 
-const airlineArray = Object.entries(airlines.airlines);
-console.log(airlineArray);
-console.log(airlineArray[0][1].weight);
-
-
-export default function Home() {
-  const [items, setItems] = useState([]);
-  const [selected, setSelected] = useState([]);
-  const [sum, setSum] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [maxWeight, setMaxWeight] = useState(airlineArray[0][1].weight)
-
-  useEffect(() => {
-   getItems().then(res => {
-     setItems(res.data.items)
-     setIsLoaded(true);
-   })
-  }, [])
-
-  const airlineList = airlineArray.map(airline => {
-    return(
-      <option value={airline[1].weight} key={airline[0]}>{airline[1].name}</option>
-    )
-  })
+const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded, maxWeight, airlineArray, updateMaxWeight}) => {
 
   const itemList = items.map((item) => {
       return(
@@ -56,25 +33,6 @@ export default function Home() {
       </li>
     )
   })
-
-  const addToSelected = (item) => {
-    let currentSum = sum;
-    setSelected([...selected, item])
-    setItems(items.filter(currentItem => currentItem.name !== item.name))
-    setSum(currentSum += item.weight)
-  }
-
-  const removeFromSelected = (item) => {
-    let currentSum = sum;
-    setSelected(selected.filter(currentSelected => currentSelected.name !== item.name))
-    setItems([...items, item])
-    setSum(currentSum -= item.weight)
-  }
-
-  const updateMaxWeight = (weight) => {
-    setMaxWeight(weight)
-    console.log(maxWeight);
-  }
   
   return (
     <div className={styles.container}>
@@ -83,17 +41,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.container}>
-      <select onChange={(e) => updateMaxWeight(e.target.value)}>
-        <option selected="selected">Airline</option>
-        {airlineList}
-      </select>
+        <AirlineDropdown airlineArray={airlineArray} updateMaxWeight={updateMaxWeight} />
         <div className={styles.cardDeck}>
           <div className={styles.card}>
             <h3>Inventory</h3>
             <hr /> 
             { isLoaded ? <ul>{itemList}</ul> : <LoadSpinner /> }
           </div>
-          <AiOutlineArrowRight />
+          <AiOutlineArrowRight size={36} style={{"marginTop": "150px"}}/>
           <div className={styles.card}>
             <h3>Selected</h3>
             <hr />
@@ -105,10 +60,19 @@ export default function Home() {
                 Total: {sum/1000}kg
               </div>
             <hr />
-            <button>See Summary</button>
+              <div className={styles.summary_cta}>
+                { sum/1000 < maxWeight ? <Link href="/report">See Summary</Link> : 
+                  <div>
+                    <h4>Too Heavy!</h4>
+                    <small>Remove some items to stay within the airline's limit.</small>
+                  </div>
+                }
+              </div>
           </div>
         </div>
       </main>
     </div>
   )
 }
+
+export default Home;
