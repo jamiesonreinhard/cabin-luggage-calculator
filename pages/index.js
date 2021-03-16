@@ -6,7 +6,7 @@ import LoadSpinner from '../components/loadSpinner'
 import AirlineDropdown from '../components/airlineDropdown'
 import Link from 'next/link'
 
-const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded, maxWeight, airlineArray, updateMaxWeight}) => {
+const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded, maxWeight, airlineArray, updateAirline}) => {
 
   const itemList = items.map((item) => {
       return(
@@ -42,7 +42,7 @@ const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded
       </Head>
       <main className={styles.container}>
         
-        <AirlineDropdown airlineArray={airlineArray} updateMaxWeight={updateMaxWeight} />
+        <AirlineDropdown airlineArray={airlineArray} updateAirline={updateAirline} />
 
         <div className={styles.cardDeck}>
 

@@ -1,18 +1,21 @@
 import React from 'react'
+import styles from '../styles/Home.module.scss'
 
-const AirlineDropdown = ({updateMaxWeight, airlineArray}) => {
+const AirlineDropdown = ({updateAirline, airlineArray}) => {
 
   const airlineList = airlineArray.map(airline => {
     return(
-      <option value={airline[1].weight} key={airline[0]}>{airline[1].name}</option>
+      <option value={JSON.stringify(airline[1])} key={airline[0]}>{airline[1].name}</option>
     )
   })
 
   return(
-    <select onChange={(e) => updateMaxWeight(e.target.value)}>
+    <div className={styles.customSelect}>
+      <select onChange={(e) => updateAirline(e.target.value)}>
       <option value="selected">Select an Airline</option>
       {airlineList}
     </select>
+    </div>
   )
 }
 

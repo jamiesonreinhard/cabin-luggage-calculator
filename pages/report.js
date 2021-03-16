@@ -2,7 +2,7 @@ import React from 'react'
 import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
 
-const Report = ({selected, sum, maxWeight}) => {
+const Report = ({selected, sum, airline}) => {
   
   const selectedList = selected.map((item) => {
     return(
@@ -17,6 +17,7 @@ const Report = ({selected, sum, maxWeight}) => {
   
   return(
     <div className={styles.container}>
+      <h2>{airline}</h2>
       <div className={styles.card}>
         <h3>🎒 My Backpack</h3>
         <hr />

@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }) {
   const [items, setItems] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false)
   const [maxWeight, setMaxWeight] = useState(airlineArray[0][1].weight)
+  const [airline, setAirline] = useState("")
 
   useEffect(() => {
     getItems().then(res => {
@@ -33,7 +34,10 @@ function MyApp({ Component, pageProps }) {
     setSum(currentSum -= item.weight)
   }
 
-  const updateMaxWeight = (weight) => {
+  const updateAirline = (data) => {
+    const airline = JSON.parse(data);
+    const {weight, name} = airline;
+    setAirline(name)
     setMaxWeight(weight)
   }
 
@@ -48,7 +52,8 @@ function MyApp({ Component, pageProps }) {
       isLoaded={isLoaded}
       maxWeight={maxWeight}
       airlineArray={airlineArray}
-      updateMaxWeight={updateMaxWeight}
+      updateAirline={updateAirline}
+      airline={airline}
    />
   ) 
 }
