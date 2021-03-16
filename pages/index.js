@@ -37,7 +37,7 @@ const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Cabin Luggage Calculator</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.container}>
