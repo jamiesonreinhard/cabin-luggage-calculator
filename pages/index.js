@@ -7,7 +7,7 @@ import LoadSpinner from '../components/loadSpinner'
 import AirlineDropdown from '../components/airlineDropdown'
 import Link from 'next/link'
 
-const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded, maxWeight, airlineArray, updateAirline}) => {
+const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded, maxWeight, airlineArray, updateAirline, airline}) => {
 
   const itemList = items.map((item) => {
       return(
@@ -71,7 +71,8 @@ const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded
                 <Link href="/report">See Summary</Link> : 
                   <div>
                     <h4>Too Heavy!</h4>
-                    <small>Remove some items to stay within the airline's limit.</small>
+                    <small>Remove some items to stay within {airline}'s limit.</small>
+                    <br />
                     <br />
                     <small style={{"color": "black"}}><strong>Max: {maxWeight}kg</strong></small>
                   </div>
