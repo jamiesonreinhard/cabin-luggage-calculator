@@ -2,6 +2,7 @@ import '../styles/globals.scss'
 import React, { useState, useEffect } from 'react'
 import getItems from '../services/services'
 import airlines from '../data/airlines.json'
+import BgVideo from '../components/BgVideo'
 
 const airlineArray = Object.entries(airlines.airlines);
 
@@ -42,6 +43,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   return(
+    <>
     <Component 
       {...pageProps}
       selected={selected}
@@ -55,6 +57,7 @@ function MyApp({ Component, pageProps }) {
       updateAirline={updateAirline}
       airline={airline}
    />
+   </>
   ) 
 }
 

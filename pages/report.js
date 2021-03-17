@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
 import Typed from 'react-typed'
+import Head from 'next/head'
 
 const Report = ({selected, sum, airline}) => {
   
@@ -17,6 +18,11 @@ const Report = ({selected, sum, airline}) => {
   })
   
   return(
+    <>
+    <Head>
+        <title>Report</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <div className={styles.container}>
       <h2>{airline}</h2>
       <div className={styles.card}>
@@ -44,6 +50,7 @@ const Report = ({selected, sum, airline}) => {
             loop >
         </Typed>
     </div>
+    </>
   )
 }
 
