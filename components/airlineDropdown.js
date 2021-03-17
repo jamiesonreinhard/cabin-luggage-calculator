@@ -11,7 +11,7 @@ const AirlineDropdown = ({updateAirline, airlineArray}) => {
 
   return(
     <div className={styles.customSelect}>
-      <select onChange={(e) => updateAirline(e.target.value)}>
+      <select style={{"width":"200px"}, {"-webkit-appearance": "none"}} onChange={(e) => updateAirline(e.target.value)}>
       <option value="selected">Select an Airline</option>
       {airlineList}
     </select>

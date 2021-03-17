@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
+import Typed from 'react-typed'
 
 const Report = ({selected, sum, airline}) => {
   
@@ -32,6 +33,16 @@ const Report = ({selected, sum, airline}) => {
             <Link href="/">Back to Home</Link>
           </div>
       </div>
+      <Typed style={{"marginTop": "30px"}}
+        strings={[
+            'Please Hire Me',
+            'I Will Work Hard',
+            'Weekendr Will Thrive',
+            'Soon We Will Travel Again']}
+            typeSpeed={80}
+            backSpeed={50}
+            loop >
+        </Typed>
     </div>
   )
 }
