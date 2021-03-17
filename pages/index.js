@@ -57,7 +57,7 @@ const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded
             <h3>✅ Selected</h3>
             <hr />
             <ul>
-              {selectedList}
+              {selected.length > 0 ? selectedList : <div style={{"textAlign":"center"}}>Nothing Selected</div>}
             </ul>
             <hr />
             <div className={styles.total} style={sum/1000 <= maxWeight ? {"color": "green"} : {"color": "red"}}>
