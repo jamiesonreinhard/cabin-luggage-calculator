@@ -2,7 +2,6 @@ import '../styles/globals.scss'
 import React, { useState, useEffect } from 'react'
 import getItems from '../services/services'
 import airlines from '../data/airlines.json'
-import BgVideo from '../components/BgVideo'
 
 const airlineArray = Object.entries(airlines.airlines);
 
@@ -36,7 +35,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   const updateAirline = (data) => {
-    const airline = JSON.parse(data);
+    const airline = data[1];
     const {weight, name} = airline;
     setAirline(name)
     setMaxWeight(weight)

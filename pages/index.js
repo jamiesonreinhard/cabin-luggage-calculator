@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai'
+import { FaArrowAltCircleRight } from 'react-icons/fa'
 import LoadSpinner from '../components/loadSpinner'
 import AirlineDropdown from '../components/airlineDropdown'
 import Link from 'next/link'
@@ -51,7 +52,8 @@ const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded
             <hr /> 
             { isLoaded ? <ul>{itemList}</ul> : <LoadSpinner /> }
           </div>
-          <AiOutlineArrowRight size={36} style={{"marginTop": "150px"}}/>
+
+          <FaArrowAltCircleRight size={36} style={{"marginTop": "150px", "color": "#f07979"}}/>
 
           <div className={styles.card}>
             <h3>✅ Selected</h3>
@@ -70,6 +72,8 @@ const Home = ({selected, addToSelected, removeFromSelected, sum, items, isLoaded
                   <div>
                     <h4>Too Heavy!</h4>
                     <small>Remove some items to stay within the airline's limit.</small>
+                    <br />
+                    <small style={{"color": "black"}}><strong>Max: {maxWeight}kg</strong></small>
                   </div>
                 }
               </div>
